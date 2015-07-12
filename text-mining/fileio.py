@@ -1,3 +1,6 @@
+import datetime
+file = "img13.jpg"
+print file[3:].split('.')[0]
 def read_file(path):
 	file = open(path, "r")
 	content=""
@@ -10,6 +13,11 @@ def read_file(path):
 
 	file.close()
 	return content
+
+def write_file(path, content):
+	file = open(path+str(datetime.date.today())+".txt","w")
+	file.write(content)
+	file.close()
 
 def write_dict_file(path, dict):
 	file = open(path,"w")

@@ -9,7 +9,7 @@ from os import listdir
 
 # 문장부호제거
 def remove_puc_marks(contents):
-	pmarks=['?', '\/', '(', ')', ',', '.', ':', '{', '}', ';', '!', '@', '#', '$', '%', '^', '&', '-', '_', '=', '<', '>', '*']
+	pmarks=['·','?', '\/', '(', ')', ',', '.', ':', '{', '}', ';', '!', '@', '#', '$', '%', '^', '&', '-', '_', '=', '<', '>', '*']
 	for mark in pmarks:
 		contents= contents.replace(mark,' ')
 	return contents
@@ -139,8 +139,12 @@ def wordgram_analyze(dirpath):
 		file_dict = hannanum_analyze_22(file_contents)	#형태소별로 딕셔너리에 분류
 		# file_dict = hannanum_analyze_22_key(file_contents)	#형태소별로 딕셔너리에 분류
 		dict_map.append(file_dict)						#전체 딕셔너리에 추가한다.
-
 	return dict_map
+
+def wordgram_analyze_string(content):
+	file_contents= remove_puc_marks(content)	#문장 부호제거
+	file_dict = hannanum_analyze_22(file_contents)	#형태소별로 딕셔너리에 분류
+	return file_dict
 
 def print_dict(dict):
 	result=""
@@ -153,11 +157,10 @@ def print_dict(dict):
 def addup(list):
 	result={}
 	for dict in list:
-		print_dict(dict)
 		for key in dict:
 			if not key in result.keys():
 				result[key]=dict[key]
 			else:
 				result[key]+=dict[key]
-
+	
 	return OrderedDict(sorted(result.items(), key=itemgetter(1), reverse=True))
