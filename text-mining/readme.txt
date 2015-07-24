@@ -53,4 +53,9 @@ tf-idf값을 이용해서 단어의 중요도를 분석하는 메소드도 구�
 만약 data1 문서에 'Good'이라는 단어가 자주 나오는데, data2 문서에도 자주 나타난다면, 'Good'은 data1의 특징적인 키워드가 아니므로 'Good'의 tf-idf값은 낮게 나와 중요도가 낮아진다.
 
 tf-idf값의 결과값은 result2.txt에 저장한다.
+
+2015/7
+getNews.py
+YTN 정치,사회면 뉴스를 긁어와서 텍스트 분석. 빈도수 측정해서 순위별로 보여준다.
+
 참조: tf-idf http://blog.secmem.org/670
